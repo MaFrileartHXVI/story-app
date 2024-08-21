@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+</head>
+<body>
+<header>
+  <nav class="navbar border-bottom">
+    <div class="container grid">
+      <c-brand-name></c-brand-name>
+      
+      <c-breadcrumb title="<%= htmlWebpackPlugin.options.title %>"></c-breadcrumb>
+      
+      <div class="g-col-4">
+        <a href="profile.html">
+          <button class="btn" id="profile"
+                  style="width: 48px; height: 48px; padding: 0;"
+                  type="button">
+            <i class="bi bi-person fs-2"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="row" id="stories">
+  </div>
+  
+  <div id="pagination"></div>
+</main>
+
+<div id="modalContainer">
+</div>
+
+<a
+  aria-label="Create Story"
+  class="floating-btn btn p-0"
+  href="/stories/create.html"
+>
+  <i class="bi bi-plus"></i>
+</a>
+
+<c-footer></c-footer>
+</body>
+</html>

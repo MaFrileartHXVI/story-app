@@ -1,0 +1,19 @@
+/* Error: Can't find stylesheet to import.
+ *    ,
+ * 11 | @import '~bootstrap/scss/functions';
+ *    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   vendors\_bootstrap.scss 11:9  @forward
+ *   vendors\_index.scss 1:1       @use
+ *   main.scss 1:1                 root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a    \2577 \a 11 \2502  @import '~bootstrap/scss/functions';\d\a    \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   vendors\\_bootstrap.scss 11:9  @forward\a   vendors\\_index.scss 1:1       @use\a   main.scss 1:1                 root stylesheet";
+}

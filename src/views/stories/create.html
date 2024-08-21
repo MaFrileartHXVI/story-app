@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title><%= htmlWebpackPlugin.options.title %> | Story App</title>
+</head>
+<body>
+<header>
+  <nav class="navbar border-bottom">
+    <div class="container grid">
+      <c-brand-name></c-brand-name>
+      
+      <c-breadcrumb title="<%= htmlWebpackPlugin.options.title %>"></c-breadcrumb>
+      
+      <div class="g-col-4">
+        <button class="btn" id="profile"
+                style="width: 48px; height: 48px; padding: 0;"
+                type="button">
+          <i class="bi bi-person fs-2"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="container form-container">
+    <h2 class="my-4">Create a New Story</h2>
+    <form class="needs-validation" id="createStoryForm" novalidate>
+      <div class="mb-3">
+        <label class="form-label" for="storyDescription">Description</label>
+        <textarea class="form-control" id="storyDescription" required rows="3"></textarea>
+        <div class="invalid-feedback">Description is required.</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="storyPhoto">Photo</label>
+        <input accept="image/*" class="form-control" id="storyPhoto" required type="file">
+        <div class="photo-preview d-none" id="photoPreview"></div>
+        <div class="invalid-feedback">Photo is required.</div>
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</main>
+
+<c-footer></c-footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+@mixin border-radius-16 {
+  border-radius: 16px;
+}
+
+@mixin drop-shadow($h-offset: 0px, $v-offset: 4px, $blur: 8px, $color: rgba(0, 0, 0, 0.3)) {
+  box-shadow: $h-offset $v-offset $blur $color;
+}
