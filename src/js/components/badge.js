@@ -2,9 +2,9 @@ import { LitElement, html, css } from 'lit';
 
 class Badge extends LitElement {
   static properties = {
-    fullName: { type: String }
+    fullName: { type: String },
   };
-  
+
   static styles = css`
     .badge {
       display: inline-block;
@@ -16,18 +16,14 @@ class Badge extends LitElement {
       font-weight: bold;
     }
   `;
-  
+
   constructor() {
     super();
     this.fullName = 'John Doe';
   }
-  
+
   render() {
-    return html`
-      <div class="badge">
-        ${this.fullName}
-      </div>
-    `;
+    return html` <div class="badge">${this.fullName}</div> `;
   }
 }
 

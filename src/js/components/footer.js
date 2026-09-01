@@ -3,7 +3,7 @@ class Footer extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
   }
-  
+
   static get styles() {
     return `
       :host {
@@ -34,11 +34,11 @@ class Footer extends HTMLElement {
       }
     `;
   }
-  
+
   connectedCallback() {
     this.render();
   }
-  
+
   render() {
     this.shadowRoot.innerHTML = `
       <style>${Footer.styles}</style>

@@ -5,7 +5,7 @@ class ProfilePhoto extends LitElement {
     name: { type: String },
     imageUrl: { type: String },
   };
-  
+
   static styles = css`
     .profile-header {
       display: flex;
@@ -26,17 +26,17 @@ class ProfilePhoto extends LitElement {
       font-size: 1.5rem;
     }
   `;
-  
+
   constructor() {
     super();
     this.name = 'John Doe';
     this.imageUrl = '';
   }
-  
+
   render() {
     return html`
       <div class="profile-header">
-        <img alt="Profile Picture" src="${this.imageUrl}">
+        <img alt="Profile Picture" src="${this.imageUrl}" />
         <c-badge fullName="${this.name}"></c-badge>
       </div>
     `;

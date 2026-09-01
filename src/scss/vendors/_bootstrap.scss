@@ -4,21 +4,25 @@
 
 // Custom modules
 @use '../vendors-extensions/bootstrap/components/navbar' as navbar;
+@use '../variables' as customVars;
 
 //
 // Functions Bootstrap
 //
 @import '~bootstrap/scss/functions';
 
-
 $navbar-padding-y: navbar.$navbar-padding-y;
 
+// Menerapkan/override variables Bootstrap apa pun di sini
+$primary: customVars.$primary-color;
+$secondary: customVars.$secondary-color;
+$body-bg: customVars.$bg-light;
+$body-color: customVars.$text-dark;
+$border-radius: customVars.$card-radius;
 
 // Variables Bootstrap
 //
 @import '~bootstrap/scss/variables';
-
-// Menerapkan/override variables Bootstrap apa pun di sini
 
 //
 // Konfigurasi Bootstrap
@@ -40,11 +44,10 @@ $navbar-padding-y: navbar.$navbar-padding-y;
 @import '~bootstrap/scss/helpers';
 
 // Komponen-Komponen
-//@import '~bootstrap/scss/tables';
 @import '~bootstrap/scss/forms';
 @import '~bootstrap/scss/buttons';
 @import '~bootstrap/scss/transitions';
-//@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/dropdown';
 @import '~bootstrap/scss/nav';
 @import '~bootstrap/scss/navbar';
 // Requires nav
@@ -53,13 +56,9 @@ $navbar-padding-y: navbar.$navbar-padding-y;
 @import '~bootstrap/scss/modal';
 @import '~bootstrap/scss/placeholders';
 @import '~bootstrap/scss/pagination';
-// Requires transitions
+@import '~bootstrap/scss/spinners';
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/offcanvas';
 
-//
 // Utilities API untuk menghasilkan utility classes
-//
 @import '~bootstrap/scss/utilities/api';
-
-//
-// Tambahkan custom code di sini
-//

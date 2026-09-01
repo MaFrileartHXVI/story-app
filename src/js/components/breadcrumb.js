@@ -4,7 +4,7 @@ class Breadcrumb extends LitElement {
   static properties = {
     title: { type: String },
   };
-  
+
   static styles = css`
     .breadcrumb-container {
       display: flex;
@@ -16,12 +16,12 @@ class Breadcrumb extends LitElement {
       margin: 0;
     }
   `;
-  
+
   constructor() {
     super();
     this.title = 'Default Title';
   }
-  
+
   render() {
     return html`
       <div class="breadcrumb-container">

@@ -18,7 +18,7 @@ class BrandName extends LitElement {
       margin: 0;
     }
   `;
-  
+
   render() {
     return html`
       <div class="brand-container">

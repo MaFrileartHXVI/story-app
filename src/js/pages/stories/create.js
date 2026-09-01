@@ -1,96 +1,52 @@
+import { addStory } from '../../network/stories';
+import Swal from 'sweetalert2';
+
 const CreateStory = {
   async init() {
     this._initialListener();
   },
-  
+
   _initialListener() {
-    const photoInput = document.querySelector('#storyPhoto');
-    photoInput.addEventListener('change', () => {
-      this._updatePhotoPreview();
-    });
+    const storyForm = document.querySelector('story-form');
     
-    const createStoryForm = document.querySelector('#createStoryForm');
-    createStoryForm.addEventListener(
-      'submit',
-      (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        if (this._validateForm()) {
-          this._sendPost();
+    if (storyForm) {
+      storyForm.addEventListener('story-submitted', async (e) => {
+        const { photo, description } = e.detail;
+        const formData = new FormData();
+        formData.append('photo', photo);
+        formData.append('description', description);
+
+        const submitBtn = storyForm.querySelector('#submitBtn');
+        const originalText = submitBtn.innerHTML;
+
+        submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Uploading...`;
+        submitBtn.disabled = true;
+
+        try {
+          const response = await addStory(formData);
+          if (!response.error) {
+            await Swal.fire({
+              icon: 'success',
+              title: 'Berhasil',
+              text: 'Story berhasil ditambahkan!',
+              timer: 1500,
+              showConfirmButton: false,
+            });
+            window.location.href = '/';
+          }
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal',
+            text: error.message || 'Gagal menambahkan story',
+          });
+        } finally {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
         }
-        
-        createStoryForm.classList.add('was-validated');
-      },
-      false,
-    );
-  },
-  
-  async _sendPost() {
-    const formData = this._getFormData();
-    
-    if (this._validateFormData(formData)) {
-      console.log('formData');
-      console.log(formData);
-      
-      this._goToDashboardPage();
+      });
     }
-  },
-  
-  _getFormData() {
-    const descriptionInput = document.querySelector('#storyDescription');
-    const photoInput = document.querySelector('#storyPhoto');
-    
-    const formData = new FormData();
-    formData.append('description', descriptionInput.value);
-    formData.append('photo', photoInput.files[0]);
-    
-    return formData;
-  },
-  
-  _updatePhotoPreview() {
-    const photoPreview = document.querySelector('#photoPreview');
-    const photoInput = document.querySelector('#storyPhoto');
-    
-    const photo = photoInput.files[0];
-    if (!photo) return;
-    
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      photoPreview.classList.remove('d-none');
-      photoPreview.style.backgroundImage = `url('${event.target.result}')`;
-    };
-    
-    reader.readAsDataURL(photo);
-  },
-  
-  _validateForm() {
-    const form = document.querySelector('#createStoryForm');
-    const descriptionInput = document.querySelector('#storyDescription');
-    const photoInput = document.querySelector('#storyPhoto');
-    
-    let isValid = true;
-    
-    if (!descriptionInput.value.trim()) {
-      descriptionInput.classList.add('is-invalid');
-      isValid = false;
-    } else {
-      descriptionInput.classList.remove('is-invalid');
-    }
-    
-    if (!photoInput.files.length) {
-      photoInput.classList.add('is-invalid');
-      isValid = false;
-    } else {
-      photoInput.classList.remove('is-invalid');
-    }
-    
-    return isValid;
-  },
-  
-  _goToDashboardPage() {
-    window.location.href = '/';
-  },
+  }
 };
 
-CreateStory.init();
+export default CreateStory;

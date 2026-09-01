@@ -1,6 +1,7 @@
 @use 'vendors';
 @use 'variables';
 @use 'mixins';
+@use 'custom';
 
 body {
   .floating-btn {
@@ -46,4 +47,3 @@ body {
     text-overflow: ellipsis;
   }
 }
-
